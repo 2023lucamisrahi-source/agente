@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fénix - Asistente de Trámites e Información</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <h1>Fénix</h1>
+        <p>Asistente virtual de trámites y consultas</p>
+      </div>
+    </div>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      <span class="status-text">En línea</span>
+    </div>
+  </header>
+
+  <main class="chat-container">
+    <!-- Panel con la lista de mensajes -->
+    <section id="chat-messages" class="messages-area" aria-live="polite">
+      <div class="message agent">
+        <div class="avatar">F</div>
+        <div class="bubble">
+          ¡Hola! 👋 Soy <strong>Fénix</strong>, tu asistente de Inteligencia Artificial para resolver dudas sobre trámites e información general.<br><br>
+          ¿En qué puedo ayudarte hoy? Puedes elegir una sugerencia de abajo o escribirme directamente.
+        </div>
+      </div>
+    </section>
+
+    <!-- Estado de carga / indicador de escritura -->
+    <div id="typing-indicator" class="typing-indicator hidden" aria-hidden="true">
+      <div class="avatar">F</div>
+      <div class="dots-bubble">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <span class="typing-text">Fénix está pensando...</span>
+    </div>
+
+    <!-- Píldoras de atajos / consultas rápidas -->
+    <div class="suggestions-bar">
+      <button class="chip-btn" data-query="¿Qué requisitos necesito para renovar el DNI?">Renovación DNI</button>
+      <button class="chip-btn" data-query="¿Cómo puedo solicitar un pasaporte urgente?">Pasaporte Urgente</button>
+      <button class="chip-btn" data-query="¿Dónde saco la constancia de CUIT/CUIL?">Constancia CUIT/CUIL</button>
+      <button class="chip-btn" data-query="¿Cómo turnar la Licencia de Conducir?">Licencia de Conducir</button>
+    </div>
+
+    <!-- Formulario de entrada -->
+    <footer class="chat-input-area">
+      <form id="chat-form" class="chat-form">
+        <textarea 
+          id="user-input" 
+          placeholder="Escribe tu duda sobre trámites o temas específicos aquí..." 
+          rows="1" 
+          maxlength="800"
+          required></textarea>
+        <button type="submit" id="send-btn" title="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+      <div class="input-footer">
+        <span id="cooldown-notice" class="cooldown-text"></span>
+        <span class="char-counter"><span id="char-count">0</span>/800</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
